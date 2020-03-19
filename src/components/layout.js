@@ -30,7 +30,7 @@ const Layout = ({ children,
       getCurrentUser,
     })
   );
-  const { search } = location.state
+  const search = location.state.search || null;
 
   return (
     <>
