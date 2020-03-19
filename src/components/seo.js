@@ -68,9 +68,38 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
       ].concat(meta)}
+      link={[
+        {
+          rel: "stylesheet",
+          href:
+            "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+        },
+        {
+          rel: "stylesheet",
+          href:
+            "https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap&subset=cyrillic"
+        },
+        {
+          rel: "stylesheet",
+          type: "text/css",
+          href:
+            "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        },
+        {
+          rel: "stylesheet",
+          type: "text/css",
+          href:
+            "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        },
+
+
+
+      ]}
     />
   )
 }
+
+
 
 SEO.defaultProps = {
   lang: `en`,

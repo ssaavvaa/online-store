@@ -1,0 +1,39 @@
+
+@import '../styles/variables.scss';
+
+
+.heading {
+    @include heading;
+}
+
+.container{
+    @include container;
+}
+
+
+
+.asidePhotos{
+    float:left;
+    width:40%;
+   display: grid;
+    background-color: $scd_color;
+        padding:20px;
+        margin-right:20px;
+  
+    ul{
+       
+        grid-gap:10px;
+        grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr);
+       
+        display: grid;
+        position: relative;
+        z-index: 1;
+         li{
+             @include imageBoxShadow;
+           
+           list-style: none;
+        
+         }
+    }
+
+}

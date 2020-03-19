@@ -1,0 +1,74 @@
+$back_color:rgb(17, 17, 39);
+$main_color:rgb(0, 106, 78);
+$scd_color:rgb(250, 250, 250);
+$third_color:rgb(241, 42, 65);
+
+$boldFont:"ProximaNovaBold";
+$regFont:"ProximaNovaReg";
+$lightFont:"ProximaNovaLight";
+$superBoldFont:"ProximaNovaBlack";
+
+@mixin imageBoxShadow {
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.082);
+    &:hover{
+        box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.144);
+    }
+}
+
+@mixin heading {
+    text-align: center;
+    margin-bottom:40px;
+    text-transform: uppercase;
+    font-family: $superBoldFont;
+}
+
+@mixin button {
+    background-color:$third_color;
+    padding:20px;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+    font-size: 24px;
+    color:white;
+    border:0px;
+    border-radius: 4px;
+    font-family: $boldFont;
+    &:hover{
+        background-color:rgb(238, 24, 49);
+    }
+ 
+}
+
+@mixin container {
+    background: white;
+    min-height: 100vh;
+    padding:40px 20px;
+    box-shadow: 7px 0 10px -4px rgba(0, 0, 0, 0.075), -7px 0 8px -4px rgba(0, 0, 0, 0.075);
+    max-width: 1200px;
+    margin:0 auto;
+}
+
+@mixin form {
+    max-width: 600px;
+    margin: 0 auto;
+    input{
+        &::placeholder{
+            color:rgba(0, 0, 0, 0.466);
+        }
+        transition: box-shadow .3s ease-in-out;
+        &:focus{
+            box-shadow: 0px 0px 2px .5px $scd_color;
+        }
+        display: block;
+        outline: none;
+        border:none;
+        border:2px solid $main_color;
+        border-radius: 4px;
+        margin-bottom:20px;
+        padding:20px;
+        width:100%;
+    }
+    button {
+        @include button;
+        width:100%;
+    }
+}

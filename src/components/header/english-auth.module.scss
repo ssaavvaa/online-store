@@ -1,0 +1,12 @@
+@import './template.module.scss';
+
+.header{
+ 
+    grid-template-columns: 70px 1fr 50px 50px 50px 50px ;
+    grid-template-areas: "logo input userLogo signUp cart bars"
+                          "nav nav nav nav nav nav";
+}
+
+
+
+

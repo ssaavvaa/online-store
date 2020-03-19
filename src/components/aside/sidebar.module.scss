@@ -1,0 +1,120 @@
+
+@import '../../styles/variables.scss';
+
+
+.rotateCross{
+   
+    transform: rotate(45deg);
+}
+
+.close{
+   font-size: 30px;
+    color:white;
+    position: absolute;
+    cursor: pointer;
+    z-index: 1000;
+    top:8px;
+    left:-33px;
+}
+
+.shadow{
+    display: none;
+    width:100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.726);
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 999;
+
+   
+}
+
+.sidebar{
+  display: none;
+    height:100vh;
+    background: white;
+    width:270px;
+    position: fixed;
+
+   
+    top:0;
+    right:0;
+   
+    nav {
+        overflow-y: scroll;
+        padding-top:20px;
+        min-height: 100vh;
+   
+        ul{
+            cursor: pointer;
+            margin:0px;
+        }
+        div{
+            display: grid;
+            align-items: center;
+       
+            cursor: pointer;
+            justify-content: space-between;
+            padding:5px 20px;
+            grid-template-areas: 'plus text'
+                                  'ul ul';
+             &:hover{
+                 background: rgba(243, 231, 231, 0.507);
+              }
+           i {
+            transition:  all .3s ease-in-out;
+               display: inline-block;
+                grid-area: plus;
+                font-size: 14px;
+            
+           }
+           p {
+              
+               margin:0px;
+               grid-area: text;
+               margin-bottom:5px;
+           }
+           ul {
+               display: none;
+               grid-area: ul;
+               li{
+                border-top:1px solid rgba(0, 0, 0, 0.116);
+                list-style: none;
+                margin:0px;
+               
+                a{
+                    font-size: 14px;
+                  
+                    padding:5px;
+                    justify-content: flex-end;
+                  
+                    transition: all .3s ease-in-out;
+                    &:hover{
+                        transform: translateX(-20px);
+ 
+                     }
+                }
+               }
+           }
+        }
+        a {
+            transition: all .2s ease-in-out;
+            i{
+                font-size: 14px;
+              
+            }
+            color:$back_color;
+            &:hover{
+                
+                background: rgba(243, 231, 231, 0.507);
+            }
+            padding:5px 20px;
+            text-decoration: none;
+            text-align: right;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}

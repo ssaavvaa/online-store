@@ -1,42 +1,51 @@
-import React, { useState } from "react"
+import React from "react"
+import Slider from "react-slick";
 import { graphql } from 'gatsby'
 import Img from "gatsby-image"
-import { useQuery } from "@apollo/react-hooks"
-import { GET_AUTHOR } from "../graphql/queries"
+import css from './index.module.scss'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import settings from '../helpers/carousel settings.json'
+import idGen from '../helpers/id_generator'
 
 
+const Body = ({ productsGallery }) => {
 
-export default ({ data: { antonImage } }) => {
 
-  const [author, setAuthor] = useState(null);
-
-  useQuery(GET_AUTHOR, {
-    onError: (err) => console.log(err),
-    onCompleted: ({ getAuthor }) => setAuthor(getAuthor)
-  })
+  const images = productsGallery.edges.map(({ node: { childImageSharp: { fluid } } }) => (
+    <li key={idGen()}>
+      <Img fluid={fluid} />
+    </li>
+  ))
 
   return (
-    <Layout>
-      <SEO title="Home" />
 
-      <h1>Hi people</h1>
-      <p>Welcome to the Gatsby , Express , GraphQl , Starter</p>
-      {author &&
-        <>
-          <p><u>Author:</u> {author.name}</p>
-          <Img style={{ width: 300, marginBottom: 30 }} fluid={antonImage.childImageSharp.fluid} />
-          <p><u>email:</u> {author.email}</p>
-          <p><u>phone:</u> {author.phone}</p>
-          <p>age: {author.age}</p>
-          <p>country: {author.country}</p>
-        </>
-      }
+    <div className={css.container}>
+      <h1 className={css.heading}>STORE</h1>
+      <div className={css.asidePhotos}>
+        <h3>New Arrivals</h3>
+        <ul >
+          {images}
+        </ul>
+      </div>
 
-    </Layout>
+      <Slider {...settings} className={css.slider}>
+        {images}
+      </Slider>
+    </div>
+
   )
 }
+
+export default ({ data: { antonImage, productsGallery }, location }) => (
+  <Layout location={location} language='en'>
+    <SEO title="Home" />
+    <Body
+      antonImage={antonImage}
+      productsGallery={productsGallery}
+    />
+  </Layout>
+)
 
 
 
@@ -49,4 +58,20 @@ export const indexPageDataQuery = graphql`
           }
         }
       }
+      productsGallery:allFile(
+        limit: 6
+        filter: {
+         extension: {regex:"/(jpg)|(png)/"}
+         absolutePath: { regex : "/images/products/"} 
+      }){
+    edges{
+      node{
+        childImageSharp{
+          fluid(maxWidth: 1200) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  }
   }`

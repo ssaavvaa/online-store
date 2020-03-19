@@ -27,7 +27,7 @@ const httpLink = createHttpLink({
 })
 
 const authLink = setContext((_, { headers }) => {
-    const token = null
+    const token = localStorage.getItem('ssaavvaa-token') || null
     return {
         headers: {
             ...headers,
