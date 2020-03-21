@@ -16,15 +16,12 @@ const initialState = {
 }
 
 
-const Body = () => {
+function Body() {
 
     const [state, setState] = useState(initialState)
 
     const { email, password } = state;
 
-    const handleChange = ({ name, value }) => {
-        setState({ ...state, [name]: value })
-    }
 
     const [signInUser, attrs] = useMutation(SIGN_IN_USER, {
         variables: {
@@ -52,7 +49,12 @@ const Body = () => {
         }
     });
 
-    const handleSubmit = e => {
+    function handleChange({ target: { name, value } }) {
+
+        setState({ ...state, [name]: value })
+    }
+
+    function handleSubmit(e) {
         e.preventDefault()
         const ifValid = validate.signIn({ email, password })
         if (!ifValid.length) {
@@ -61,39 +63,45 @@ const Body = () => {
         return null
     }
 
-    const handleKeyUp = ({ keyCode, target: { name } }) => {
+    function handleKeyUp({ keyCode, target: { name } }) {
         if (keyCode === 13) {
             switch (name) {
                 case 'email':
                     return $(`input[name='password']`).focus()
+                case 'password':
+                    const ifValid = validate.signIn({ email, password })
+                    if (!ifValid.length) {
+                        return signInUser()
+                    }
+                    return null
 
                 default: return null
             }
         }
     }
 
-    const handleKeyDown = e => {
+    function handleKeyDown(e) {
         if (e.keyCode === 13) {
             return e.preventDefault()
         }
     }
 
     return (
-        <div className={css.container}>
+        <div className='container'>
             <h1 className={css.heading}>Sign In</h1>
 
-            <form onKeyDown={e => handleKeyDown(e)} autoComplete="on" onSubmit={e => handleSubmit(e)} className={css.form}>
+            <form onKeyDown={handleKeyDown} autoComplete="on" onSubmit={handleSubmit} className={css.form}>
                 <input
-                    onKeyUp={e => handleKeyUp(e)}
-                    onChange={({ target }) => handleChange(target)}
+                    onKeyUp={handleKeyUp}
+                    onChange={handleChange}
                     value={email}
                     name='email'
                     placeholder='email'
                     type="email" />
                 <p className={css.error}></p>
                 <input
-                    onKeyUp={e => handleKeyUp(e)}
-                    onChange={({ target }) => handleChange(target)}
+                    onKeyUp={handleKeyUp}
+                    onChange={handleChange}
                     value={password}
                     name='password'
                     placeholder='password'

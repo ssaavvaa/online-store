@@ -20,6 +20,10 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/products/*`] },
+    },
+    {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {

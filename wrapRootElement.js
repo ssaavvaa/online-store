@@ -9,7 +9,7 @@ import fetch from "isomorphic-fetch"
 
 //https://anton-online-store.herokuapp.com/graphql
 //http://localhost:5000/graphql
-const uri = "https://anton-online-store.herokuapp.com/graphql"
+const uri = "http://localhost:5000/graphql"
 
 const error = onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors)

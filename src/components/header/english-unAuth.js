@@ -1,21 +1,41 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 import css from './english-unAuth.module.scss'
 import id from '../../helpers/id_generator'
 
 
+export default function ({
+    siteMapNav,
+    fluid,
+    showSideBar,
+    handleSearch,
+    location }) {
 
-export default ({ siteMapNav, fluid, showSideBar, handleSearch }) => {
+    const [searchQuery, setSearchQuery] = useState("")
+
+    useEffect(() => {
+        const query = location.state && location.state.search
+            ? location.state.search
+            : ""
+        setSearchQuery(query)
+    }, [location.state])
+
+    useEffect(() => {
+        setSearchQuery("");
+    }, [])
 
     return (
         <header className={css.header}>
             <Img className={css.logo} fluid={fluid} />
             <div className={css.input}>
                 <input
+                    value={searchQuery}
+                    onInput={handleSearch}
+                    onChange={({ target: { value } }) => setSearchQuery(value)}
                     type="text"
                     placeholder="search"
-                    onKeyUp={e => handleSearch(e)}
+
                 />
                 <i className="fas fa-search"></i>
             </div>
@@ -40,7 +60,7 @@ export default ({ siteMapNav, fluid, showSideBar, handleSearch }) => {
                 </nav>
                 <ul className={css.options}>
                     <li>
-                        <Link to='/'>
+                        <Link to='/products'>
                             products
                         </Link>
                     </li>

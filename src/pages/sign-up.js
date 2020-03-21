@@ -18,15 +18,11 @@ const initialState = {
     repeatPassword: ""
 }
 
-const Body = () => {
+function Body() {
 
     const [state, setState] = useState(initialState)
 
     const { username, email, password, repeatPassword } = state;
-
-    const handleChange = ({ name, value }) => {
-        setState({ ...state, [name]: value })
-    }
 
     const [signUpUser, attrs] = useMutation(SIGN_UP_USER, {
         variables: {
@@ -55,7 +51,11 @@ const Body = () => {
         }
     });
 
-    const handleSubmit = e => {
+    function handleChange({ target: { name, value } }) {
+        setState({ ...state, [name]: value })
+    }
+
+    function handleSubmit(e) {
         e.preventDefault()
 
         $(`.${css.checkForm}`).text('')
@@ -71,7 +71,7 @@ const Body = () => {
         return null
     }
 
-    const handleKeyUp = ({ keyCode, target: { name } }) => {
+    function handleKeyUp({ keyCode, target: { name } }) {
         if (keyCode === 13) {
             switch (name) {
                 case 'username':
@@ -80,51 +80,57 @@ const Body = () => {
                     return $(`input[name='password']`).focus()
                 case 'password':
                     return $(`input[name='repeatPassword']`).focus()
-
+                case 'repeatPassword':
+                    const ifValid = validate.signUp({ username, email, password, repeatPassword })
+                    if (!ifValid.length) {
+                        return signUpUser()
+                    }
+                    return null
                 default: return null
             }
         }
     }
 
-    const handleKeyDown = e => {
+    function handleKeyDown(e) {
         if (e.keyCode === 13) {
             return e.preventDefault()
         }
     }
 
+
     return (
 
-        <div className={css.container}>
+        <div className='container'>
             <h1 className={css.heading}>Sign Up</h1>
 
-            <form onKeyDown={e => handleKeyDown(e)} autoComplete="on" onSubmit={e => handleSubmit(e)} className={css.form}>
+            <form onKeyDown={handleKeyDown} autoComplete="on" onSubmit={handleSubmit} className={css.form}>
                 <input
                     value={username}
-                    onKeyUp={e => handleKeyUp(e)}
-                    onChange={({ target }) => handleChange(target)}
+                    onKeyUp={handleKeyUp}
+                    onChange={handleChange}
                     name='username'
                     placeholder='username'
                     type="text" />
                 <p className={css.error}></p>
                 <input
-                    onKeyUp={e => handleKeyUp(e)}
-                    onChange={({ target }) => handleChange(target)}
+                    onKeyUp={handleKeyUp}
+                    onChange={handleChange}
                     value={email}
                     name='email'
                     placeholder='email'
                     type="email" />
                 <p className={css.error}></p>
                 <input
-                    onKeyUp={e => handleKeyUp(e)}
-                    onChange={({ target }) => handleChange(target)}
+                    onKeyUp={handleKeyUp}
+                    onChange={handleChange}
                     value={password}
                     name='password'
                     placeholder='password'
                     type="password" />
                 <p className={css.error}></p>
                 <input
-                    onKeyUp={e => handleKeyUp(e)}
-                    onChange={({ target }) => handleChange(target)}
+                    onKeyUp={handleKeyUp}
+                    onChange={handleChange}
                     value={repeatPassword}
                     name='repeatPassword'
                     placeholder='repeat password'

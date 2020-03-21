@@ -1,0 +1,15 @@
+{
+    "infinite": true,
+    "autoplay": false,
+    "centerMode": true,
+    "slidesToShow": 1,
+    "mobileFirst": true,
+    "dots": true,
+    "initialSlide": 0,
+    "slidesToScroll": 1,
+    "centerPadding": "0px",
+    "speed": 500,
+    "swipeToSlide": true,
+    "arrows": true,
+    "cssEase": "linear"
+}

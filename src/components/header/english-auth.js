@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 import css from './english-auth.module.scss'
@@ -6,11 +6,33 @@ import id from '../../helpers/id_generator'
 
 
 
-export default ({ siteMapNav, fluid, resetStore, getCurrentUser, showSideBar, handleSearch }) => {
-    const handleSignOut = () => {
+export default function ({
+    siteMapNav,
+    fluid,
+    resetStore,
+    getCurrentUser,
+    showSideBar,
+    handleSearch,
+    location }) {
+
+    const [searchQuery, setSearchQuery] = useState("")
+
+    useEffect(() => {
+        const query = location.state && location.state.search
+            ? location.state.search
+            : ""
+        setSearchQuery(query)
+    }, [location.state])
+
+    useEffect(() => {
+        setSearchQuery("");
+    }, [])
+
+    function handleSignOut() {
         localStorage.setItem('ssaavvaa-token', null);
-        resetStore()
+        return resetStore()
     }
+
     return (
         <header className={css.header}>
             <Img className={css.logo} fluid={fluid} />
@@ -18,7 +40,9 @@ export default ({ siteMapNav, fluid, resetStore, getCurrentUser, showSideBar, ha
                 <input
                     type="text"
                     placeholder="search"
-                    onKeyUp={e => handleSearch(e)}
+                    value={searchQuery}
+                    onInput={handleSearch}
+                    onChange={({ target: { value } }) => setSearchQuery(value)}
                 />
                 <i className="fas fa-search"></i>
             </div>
@@ -47,13 +71,19 @@ export default ({ siteMapNav, fluid, resetStore, getCurrentUser, showSideBar, ha
                 </nav>
                 <ul className={css.options}>
                     <li>
-                        products
+                        <Link to='/products'>
+                            products
+                        </Link>
                     </li>
                     <li>
-                        pictures
+                        <Link to='/'>
+                            pictures
+                        </Link>
                     </li>
                     <li>
-                        services
+                        <Link to='/'>
+                            services
+                        </Link>
                     </li>
                 </ul>
                 <select className={css.language}>

@@ -1,0 +1,67 @@
+@import '../../styles/variables.scss';
+
+
+.item{
+
+    list-style: none;
+   padding:10px;
+   transition: all .3s ease-in-out;
+   cursor: pointer;
+   margin:0px;
+    &:hover {
+        @include imageBoxShadow
+    }
+    p{
+    font-size: 14px;
+        padding:2px;
+        margin:0px;
+    }
+}
+
+.brand{
+    border-bottom:1px solid rgba(0, 0, 0, 0.151);
+    text-align: center;
+}
+
+.productImage{
+    width:100%;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.name{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+ 
+}
+
+.price{
+    text-align: center;
+    border-top:.5px solid rgba(0, 0, 0, 0.151);
+}
+
+.imageWrapper{
+    position: relative;
+    padding:10px 0px;
+
+}
+
+.arrowLeft , .arrowRight {
+    position: absolute;
+    cursor: pointer;
+    top:0;
+    font-size: 30px;
+    display: none;
+    padding:10px;
+}
+
+.arrowLeft{
+    top:calc(50% - 30px);
+    left:0;
+}
+
+.arrowRight{
+    top:calc(50% - 30px);
+    right:0;
+}

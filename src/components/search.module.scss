@@ -1,7 +1,7 @@
 @import '../styles/variables.scss';
 
 .container {
-  @include container;
+
   h1{
       @include heading;
   }

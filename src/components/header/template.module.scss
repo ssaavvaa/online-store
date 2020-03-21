@@ -3,9 +3,10 @@
 
 
 .header{
+   
     padding-top:10px;
     padding-bottom:0px;
-    background: $back_color;
+    background: linear-gradient(to left , $third_color , $back_color);
     grid-gap: 10px;
     display: grid;
     border-bottom:2px solid $scd_color;
@@ -13,7 +14,7 @@
     grid-template-columns: 70px 1fr 50px 50px 50px ;
     grid-template-areas: "logo input signUp cart bars"
                           "nav nav nav nav nav";
- 
+                          border-bottom:2px solid $back_color;
 }
 
 .language{
@@ -71,7 +72,7 @@
            position: absolute;
            background: black;
            right:-5px;
-           top:calc(50% - 4px);
+           top:calc(50% - 3px);
        }
 
     }
@@ -79,7 +80,7 @@
 
 .nav{
 
-    border-bottom:2px solid $back_color;
+   
 
     background: $scd_color;
     padding:10px 30px;

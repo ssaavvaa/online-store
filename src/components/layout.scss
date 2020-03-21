@@ -12,6 +12,7 @@ html {
   }
 }
 body {
+  
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -624,15 +625,40 @@ pre tt:after {
   content: "";
 }
 
-.slick-slider{
 
 
+.fixedHeader{
+
+  position: sticky;
+  width:100%;
+  z-index:999;
+  top:0px;
+  left:0;
 }
 
 main {
   min-height: 100vh;
  background: url('../images/snow_ski_background_page.png');
  background-attachment:fixed;
+}
+
+.visually-hidden { 
+  position: absolute !important;
+  height: 1px; 
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* added line */
+}
+
+.container {
+  background: white;
+  min-height: 100vh;
+  padding:40px 20px;
+  box-shadow: 7px 0 10px -4px rgba(0, 0, 0, 0.075), -7px 0 8px -4px rgba(0, 0, 0, 0.075);
+  max-width: 1200px;
+  margin:0 auto;
 }
 
 @media only screen and (max-width: 480px) {

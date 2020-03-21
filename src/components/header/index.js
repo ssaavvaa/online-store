@@ -5,7 +5,10 @@ import EnglishUnAuth from './english-unAuth'
 import EnglishAuth from './english-auth'
 import { shadow, sidebar } from '../aside/sidebar.module.scss'
 
-const Header = ({ resetStore, siteMapNav, language, location, getCurrentUser }) => {
+
+
+
+function Header({ resetStore, siteMapNav, language, location, getCurrentUser }) {
 
   const { file: { childImageSharp: { fluid } } } = useStaticQuery(
     graphql`
@@ -20,10 +23,9 @@ const Header = ({ resetStore, siteMapNav, language, location, getCurrentUser }) 
       }
     `)
 
-  const handleSearch = e => {
-    const { value } = e.target
-    if (e.keyCode === 13 && value.length) {
+  function handleSearch({ target: { value } }) {
 
+    if (value.length) {
       return navigate(`/${location.pathname}`, { state: { search: value } })
     }
 
@@ -34,14 +36,23 @@ const Header = ({ resetStore, siteMapNav, language, location, getCurrentUser }) 
     return null
   }
 
-  const showSideBar = () => {
+  function showSideBar() {
     $(`.${sidebar} nav`).show()
+
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    let scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    window.onscroll = function () {
+      window.scrollTo(scrollLeft, scrollTop);
+    };
+
+
     $(`.${shadow}`).fadeIn()
-    $(`.${sidebar}`).animate({ width: 'toggle' }, 350);
+    return $(`.${sidebar}`).animate({ width: 'toggle' }, 350);
   }
 
   if (!getCurrentUser && language === 'en') {
     return <EnglishUnAuth
+      location={location}
       handleSearch={handleSearch}
       showSideBar={showSideBar}
       siteMapNav={siteMapNav}
@@ -49,6 +60,7 @@ const Header = ({ resetStore, siteMapNav, language, location, getCurrentUser }) 
   }
   if (getCurrentUser && language === 'en') {
     return <EnglishAuth
+      location={location}
       handleSearch={handleSearch}
       showSideBar={showSideBar}
       resetStore={resetStore}

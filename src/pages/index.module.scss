@@ -6,17 +6,11 @@
     @include heading;
 }
 
-.container{
-    @include container;
-}
-
-
-
 .asidePhotos{
     float:left;
     width:40%;
    display: grid;
-    background-color: $scd_color;
+    background: linear-gradient( to bottom , transparent , rgb(248, 238, 238));
         padding:20px;
         margin-right:20px;
   

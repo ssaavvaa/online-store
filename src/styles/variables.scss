@@ -1,4 +1,5 @@
-$back_color:rgb(17, 17, 39);
+$back_color:rgb(31, 6, 6);
+
 $main_color:rgb(0, 106, 78);
 $scd_color:rgb(250, 250, 250);
 $third_color:rgb(241, 42, 65);
@@ -38,14 +39,6 @@ $superBoldFont:"ProximaNovaBlack";
  
 }
 
-@mixin container {
-    background: white;
-    min-height: 100vh;
-    padding:40px 20px;
-    box-shadow: 7px 0 10px -4px rgba(0, 0, 0, 0.075), -7px 0 8px -4px rgba(0, 0, 0, 0.075);
-    max-width: 1200px;
-    margin:0 auto;
-}
 
 @mixin form {
     max-width: 600px;

@@ -1,23 +1,48 @@
 
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { navigate } from 'gatsby'
 import PropTypes from "prop-types"
 import withSession from './with_session'
 import Header from "./header"
 import Aside from './aside'
 import Search from './search'
+import Footer from './footer'
+import { handleScroll } from '../helpers/handleScroll'
 import "./layout.scss"
 import "../fonts/fonts.scss";
 
 
+let currentTop = 0;
+
 const authRoutes = ['/sign-up', '/sign-in']
 
-const Layout = ({ children,
+function Layout({ children,
   location,
   siteMapNav = null,
   getCurrentUser,
   resetStore,
-  language }) => {
+  language }) {
+
+  const [ifSearch, setIfSearch] = useState(null)
+
+
+  useEffect(() => {
+
+    if (document.readyState === "complete") {
+      if (location.state) {
+        location.state.search = null;
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+  }, []);
+
+
+
+  useEffect(() => {
+    location.state && location.state.search
+      ? setIfSearch(location.state.search)
+      : setIfSearch(null)
+  }, [location.state])
 
   if (authRoutes.includes(location.pathname) && getCurrentUser) {
     navigate('/')
@@ -30,12 +55,11 @@ const Layout = ({ children,
       getCurrentUser,
     })
   );
-  const search = location.state && location.state.search
-    ? location.state.search
-    : null;
+
 
   return (
     <>
+
       <Header language={language}
         location={location}
         resetStore={resetStore}
@@ -43,20 +67,21 @@ const Layout = ({ children,
         getCurrentUser={getCurrentUser}
       />
 
-      <main>
-        {!search
-          ? childWithProps
-          : <Search search={search} />
-        }
+
+
+      {ifSearch &&
+        <main>
+          <Search search={ifSearch} />
+        </main>
+      }
+
+      <main style={ifSearch ? { display: "none" } : null}>
+        {childWithProps}
       </main>
 
       <Aside language={language} />
 
-      <footer>
-        © {new Date().getFullYear()}, Built with
-          {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+      <Footer />
 
     </>
   )

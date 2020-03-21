@@ -9,7 +9,7 @@ export default Component => props => {
   if (loading) return <p>Loading...</p>
 
   const { getCurrentUser } = data;
-  console.log(data)
+
   const { reFetchObservableQueries, resetStore } = client;
   return (
     <Component

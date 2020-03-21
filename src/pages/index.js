@@ -9,8 +9,7 @@ import settings from '../helpers/carousel settings.json'
 import idGen from '../helpers/id_generator'
 
 
-const Body = ({ productsGallery }) => {
-
+function Body({ productsGallery }) {
 
   const images = productsGallery.edges.map(({ node: { childImageSharp: { fluid } } }) => (
     <li key={idGen()}>
@@ -20,7 +19,7 @@ const Body = ({ productsGallery }) => {
 
   return (
 
-    <div className={css.container}>
+    <div className='container'>
       <h1 className={css.heading}>STORE</h1>
       <div className={css.asidePhotos}>
         <h3>New Arrivals</h3>

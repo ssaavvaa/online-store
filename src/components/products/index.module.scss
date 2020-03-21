@@ -1,0 +1,12 @@
+@import '../../styles/variables.scss';
+
+.heading{
+    @include heading;
+}
+
+.allCategoryProducts{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+

@@ -3,10 +3,9 @@ import { Link } from 'gatsby'
 import $ from 'jquery'
 import css from './sidebar.module.scss'
 
-export default () => {
+export default function () {
 
-    const handleClose = e => {
-        const { close } = e.target.dataset
+    function handleClose({ target: { dataset: { close } } }) {
         if (close === 'true') {
             $(`.${css.sidebar} nav`).hide()
             $(`.${css.sidebar}`).animate({ width: 'toggle' }, 350)
@@ -14,22 +13,22 @@ export default () => {
                 $(`.${css.shadow}`).fadeOut()
             }, 350);
         }
-
+        window.onscroll = function () { };
         return null;
     }
 
-    const handleSubMenu = e => {
-        $(e.currentTarget).find('ul').slideToggle()
-        $(e.currentTarget).find('i').toggleClass(css.rotateCross)
+    function handleSubMenu({ currentTarget }) {
+        $(currentTarget).find('ul').slideToggle()
+        $(currentTarget).find('i').toggleClass(css.rotateCross)
     }
 
     return (
-        <div data-close="true" onClick={e => handleClose(e)} className={css.shadow}>
+        <div data-close="true" onClick={handleClose} className={css.shadow}>
             <aside className={css.sidebar}>
                 <i data-close="true" className={`fas fa-times ${css.close}`} />
                 <nav>
                     <Link to="/"><i className="fas fa-arrow-left"></i><span>Home</span></Link>
-                    <div onClick={e => handleSubMenu(e)}>
+                    <div onClick={handleSubMenu}>
                         <i className="fas fa-plus"></i>
                         <p>Products</p>
                         <ul>

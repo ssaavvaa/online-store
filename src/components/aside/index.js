@@ -2,7 +2,7 @@ import React from "react"
 import English from './english'
 
 
-const Aside = ({ language }) => {
+function Aside({ language }) {
     switch (language) {
         case "en":
             return <English />
