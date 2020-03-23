@@ -12,7 +12,7 @@ export default function ({
     showSideBar,
     handleSearch,
     location }) {
-
+    console.log(location)
     const [searchQuery, setSearchQuery] = useState("")
 
     useEffect(() => {

@@ -1,0 +1,8 @@
+
+@import '../styles/variables.scss';
+
+
+.heading {
+    @include heading;
+}
+

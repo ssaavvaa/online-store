@@ -19,19 +19,25 @@ function Body({ _id }) {
         feedbacks: []
     })
 
-    const { data, loading } = useQuery(GET_PRODUCT, {
+    const [error, setError] = useState(null)
+
+    const { loading } = useQuery(GET_PRODUCT, {
         variables: { _id },
-        onCompleted: data => setProduct(data.getProduct),
-        onError: err => console.log(err)
+        onCompleted: ({ getProduct }) => setProduct(getProduct),
+        onError: () => setError(true)
     })
+
 
     const { name, brand, images, model, description, price, feedbacks } = product;
 
+
+
     return <div className='container'>
         {loading && <p style={{ textAlign: "center" }}>Loading...</p>}
-        {!loading &&
+        {error && <p > <span style={{ color: 'red' }}>Error: </span> Product with id "{_id}" not found</p>}
+        {!loading && !error &&
             <>
-                <h1 className={css.heading}>{data.getProduct.name}</h1>
+                <h1 className={css.heading}>{name}</h1>
                 <div className={css.topSection}>
                     <img alt="product image" src={images[0]} />
                     <div>

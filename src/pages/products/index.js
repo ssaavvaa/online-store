@@ -4,7 +4,7 @@ import Index from '../../components/products/index'
 import SubCategories from '../../components/products/subCategories'
 import SubCategoryAllProducts from '../../components/products/subCategoryAllProducts'
 import ProductPage from '../../components/products/productPage'
-
+import NotFound from '../404'
 
 export default ({ location }) => {
 
@@ -14,6 +14,7 @@ export default ({ location }) => {
             <SubCategories location={location} path='/:category' />
             <SubCategoryAllProducts location={location} path='/:category/:subcategory' />
             <ProductPage location={location} path='/:category/:subcategory/:_id' />
+            <NotFound path="*" />
         </Router >
     )
 }

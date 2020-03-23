@@ -38,7 +38,6 @@ function Layout({ children,
   }, []);
 
 
-
   useEffect(() => {
     location.state && location.state.search
       ? setSearchQuery(location.state.search)
@@ -49,6 +48,7 @@ function Layout({ children,
     navigate('/')
     return null
   }
+
   const childWithProps = React.Children.map(children, child =>
     React.cloneElement(child, {
       language,
@@ -78,7 +78,12 @@ function Layout({ children,
         {childWithProps}
       </main>
 
-      <Aside language={language} categories={categories} />
+      <Aside
+        getCurrentUser={getCurrentUser}
+        language={language}
+        categories={categories}
+        resetStore={resetStore}
+      />
 
       <Footer />
 

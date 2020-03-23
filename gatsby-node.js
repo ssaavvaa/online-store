@@ -20,9 +20,10 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
     }
 }
 
-exports.createPages = async ({ page, actions }) => {
+exports.createPages = async ({ actions }) => {
     const { createPage } = actions
     // Only update the `/app` page.
+
     createPage({
         path: "/products/",
         matchPath: "/products/:category/:subcategory",

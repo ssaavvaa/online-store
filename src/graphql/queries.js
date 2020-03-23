@@ -62,6 +62,38 @@ query($subCategory: String! , $limit: Int!){
 }
 `
 
+export const GET_USER_ALL_CREATED_PRODUCTS = gql`
+ query($_id: ID!){
+  getUserAllCreatedProducts(_id:$_id){
+  _id
+  name
+  model
+  description
+  brand
+  images
+  price
+  colors
+  creationDate
+  creator {
+    _id
+      username
+      email
+      picture
+  }
+  feedbacks {
+    _id
+    author{
+      _id
+      username
+      picture
+    }
+     feedback
+     creationDate
+  }
+  }
+ }
+`
+
 export const GET_PRODUCT = gql`
 query($_id: ID!){
   getProduct(_id:$_id){
@@ -70,8 +102,8 @@ query($_id: ID!){
   model
   description
   brand
-  images,
-  price,
+  images
+  price
   colors
   creationDate
   creator {

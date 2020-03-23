@@ -1,0 +1,15 @@
+@import '../../styles/variables.scss';
+
+.heading{
+    @include heading;
+}
+
+.myProducts{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap:50px;
+    li{
+        list-style: none;
+    }
+}
+

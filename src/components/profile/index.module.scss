@@ -1,0 +1,36 @@
+@import '../../styles/variables.scss';
+
+.heading{
+    @include heading;
+}
+
+p{
+    text-align: center;
+}
+
+.button {
+
+    @include button;
+    display: block;
+    margin: 0 auto!important;
+}
+
+.toMyCreatedProducts{
+    
+   display: block;
+   max-width: 200px;
+
+   margin: 0 auto;
+   margin-bottom:40px;
+   text-decoration: none;
+   color:initial;
+   cursor:pointer;
+    border-bottom: 1px solid black;
+    
+    i{
+        font-size: 12px;
+        margin-left: 10px;;
+    }
+}
+
+

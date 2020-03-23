@@ -22,7 +22,6 @@ export default Component => props => {
       categories={getCategoriesWithSubCategories || []}
       getCurrentUser={getCurrentUser}
       resetStore={resetStore}
-      reFetchObservableQueries={reFetchObservableQueries}
       {...props}
       {...data}
     />

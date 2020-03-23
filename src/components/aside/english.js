@@ -4,7 +4,7 @@ import $ from 'jquery'
 import css from './sidebar.module.scss'
 import idGen from '../../helpers/id_generator'
 
-export default function ({ categories }) {
+export default function ({ categories, getCurrentUser, resetStore }) {
 
     function handleClose({ target: { dataset: { close } } }) {
         if (close === 'true') {
@@ -34,6 +34,11 @@ export default function ({ categories }) {
 
     }
 
+    function handleSignOut() {
+        localStorage.setItem('ssaavvaa-token', null);
+        return resetStore()
+    }
+
     return (
         <div data-close="true" onClick={handleClose} className={css.shadow}>
             <aside className={css.sidebar}>
@@ -55,7 +60,10 @@ export default function ({ categories }) {
                                     <ul className={css.subCategories}>
                                         {subCategories.map(subCategory => (
                                             <li key={idGen()}>
-                                                <Link onClick={handleCloseSideBar} to={`/products/${category}/${subCategory}`}>
+                                                <Link
+                                                    onClick={handleCloseSideBar}
+                                                    to={`/products/${category}/${subCategory}`}
+                                                >
                                                     {subCategory.charAt(0).toUpperCase() + subCategory.substring(1)}
                                                 </Link>
                                             </li>
@@ -66,8 +74,25 @@ export default function ({ categories }) {
                         </ul>
                     </div>
                     <Link to="/about"><i className="fas fa-arrow-left"></i><span>About</span></Link>
-                    <Link to="/sign-in"><i className="fas fa-arrow-left"></i><span>Sign In</span></Link>
-                    <Link to="/sign-up"><i className="fas fa-arrow-left"></i><span>Sign Up</span></Link>
+                    {!getCurrentUser
+                        ? <>
+                            <Link to="/sign-in">
+                                <i className="fas fa-arrow-left"></i>
+                                <span>Sign In</span>
+                            </Link>
+                            <Link to="/sign-up">
+                                <i className="fas fa-arrow-left"></i>
+                                <span>Sign Up</span>
+                            </Link>
+                        </>
+                        : <p
+                            onClick={handleSignOut}
+                            className={css.signOut}
+                        >
+                            Sign out
+                          </p>
+                    }
+
 
                 </nav>
             </aside>

@@ -661,6 +661,56 @@ main {
   margin:0 auto;
 }
 
+
+
+.createForm{
+  max-width: 600px;
+  margin: 0 auto;
+  input{
+      &::placeholder{
+          color:rgba(0, 0, 0, 0.466);
+      }
+      transition: box-shadow .3s ease-in-out;
+      &:focus{
+          box-shadow: 0px 0px 2px .5px $scd_color;
+      }
+      display: block;
+      outline: none;
+      border:none;
+       border-bottom:2px solid black;
+      margin-bottom:20px;
+      padding:20px;
+      padding-bottom:5px;
+      width:100%;
+  }
+
+  textarea{
+    padding:20px;
+    width:100%;
+    min-height: 200px;
+    margin-bottom:20px;
+  }
+  .addImageButton{
+    @include button;
+    background-color: grey;
+    &:hover{
+      background-color: rgb(119, 113, 113);
+    }
+    max-width: 300px;
+    display:block;
+    margin: 0 auto;
+    width:100%;
+    margin-top:20px;
+    margin-bottom:0px!important;
+  }
+  button {
+      @include button;
+      width:100%;
+      margin-top:20px;
+      margin-bottom:50px;
+  }
+}
+
 @media only screen and (max-width: 480px) {
   html {
     font-size: 100%;

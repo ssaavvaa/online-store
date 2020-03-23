@@ -7,6 +7,15 @@
     transform: rotate(45deg);
 }
 
+.signOut{
+  &:hover{
+      cursor: pointer;
+  }
+margin-top: "10px";
+padding-top: "10px";
+border-top: "1px solid black";
+}
+
 .rotateCross2{
    
     transform: rotate(90deg);
