@@ -18,12 +18,13 @@ const authRoutes = ['/sign-up', '/sign-in']
 
 function Layout({ children,
   location,
+  categories,
   siteMapNav = null,
   getCurrentUser,
   resetStore,
   language }) {
 
-  const [ifSearch, setIfSearch] = useState(null)
+  const [searchQuery, setSearchQuery] = useState('')
 
 
   useEffect(() => {
@@ -40,8 +41,8 @@ function Layout({ children,
 
   useEffect(() => {
     location.state && location.state.search
-      ? setIfSearch(location.state.search)
-      : setIfSearch(null)
+      ? setSearchQuery(location.state.search)
+      : setSearchQuery('')
   }, [location.state])
 
   if (authRoutes.includes(location.pathname) && getCurrentUser) {
@@ -59,27 +60,25 @@ function Layout({ children,
 
   return (
     <>
-
-      <Header language={language}
+      <Header
+        language={language}
         location={location}
         resetStore={resetStore}
         siteMapNav={siteMapNav}
         getCurrentUser={getCurrentUser}
       />
 
-
-
-      {ifSearch &&
+      {searchQuery &&
         <main>
-          <Search search={ifSearch} />
+          <Search location={location} searchQuery={searchQuery} />
         </main>
       }
 
-      <main style={ifSearch ? { display: "none" } : null}>
+      <main style={searchQuery ? { display: "none" } : null}>
         {childWithProps}
       </main>
 
-      <Aside language={language} />
+      <Aside language={language} categories={categories} />
 
       <Footer />
 

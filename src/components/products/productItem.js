@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import $ from 'jquery';
+import { Link } from 'gatsby'
 import genId from '../../helpers/id_generator'
 import css from './productItem.module.scss'
 
@@ -30,7 +31,10 @@ export function Item({
 }
 
 export function ItemWithInfoNoGallery({
+    _id,
     name,
+    subCategory = null,
+    category = null,
     brand,
     images,
     model,
@@ -39,16 +43,18 @@ export function ItemWithInfoNoGallery({
 
     return (
         <li className={css.item}>
-            <div className={css.imageWrapper}>
-                <img key={genId()}
-                    className={css.productImage}
-                    src={images[0]}
-                    alt={images[0]}
-                />
-            </div>
-            <p className={css.name}>model: {model}</p>
-            <p className={css.brand}>brand: {brand}</p>
-            <p className={css.price}>{price}</p>
+            <Link to={`/products/${category}/${subCategory}/${_id}`}>
+                <div className={css.imageWrapper}>
+                    <img key={genId()}
+                        className={css.productImage}
+                        src={images[0]}
+                        alt={images[0]}
+                    />
+                </div>
+                <p className={css.name}>model: {model}</p>
+                <p className={css.brand}>brand: {brand}</p>
+                <p className={css.price}>{price}</p>
+            </Link>
         </li >
     )
 }

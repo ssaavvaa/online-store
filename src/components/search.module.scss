@@ -1,11 +1,17 @@
 @import '../styles/variables.scss';
+.allFoundProducts{
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap:20px;
 
-.container {
-
-  h1{
-      @include heading;
-  }
-  p{
-      text-align: center;
+  a{
+      text-decoration: none;
+      color:black;
   }
 }
+
+
+  .heading{
+      @include heading;
+  }

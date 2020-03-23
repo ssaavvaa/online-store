@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 import css from './english-unAuth.module.scss'
@@ -21,6 +22,8 @@ export default function ({
         setSearchQuery(query)
     }, [location.state])
 
+
+
     useEffect(() => {
         setSearchQuery("");
     }, [])
@@ -31,7 +34,7 @@ export default function ({
             <div className={css.input}>
                 <input
                     value={searchQuery}
-                    onInput={handleSearch}
+                    onInput={({ target: { value } }) => handleSearch(value)}
                     onChange={({ target: { value } }) => setSearchQuery(value)}
                     type="text"
                     placeholder="search"

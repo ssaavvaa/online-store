@@ -21,12 +21,8 @@ export default function ({
         const query = location.state && location.state.search
             ? location.state.search
             : ""
-        setSearchQuery(query)
+        return setSearchQuery(query)
     }, [location.state])
-
-    useEffect(() => {
-        setSearchQuery("");
-    }, [])
 
     function handleSignOut() {
         localStorage.setItem('ssaavvaa-token', null);
@@ -38,11 +34,12 @@ export default function ({
             <Img className={css.logo} fluid={fluid} />
             <div className={css.input}>
                 <input
+                    value={searchQuery}
+                    onInput={({ target: { value } }) => handleSearch(value)}
+                    onChange={({ target: { value } }) => setSearchQuery(value)}
                     type="text"
                     placeholder="search"
-                    value={searchQuery}
-                    onInput={handleSearch}
-                    onChange={({ target: { value } }) => setSearchQuery(value)}
+
                 />
                 <i className="fas fa-search"></i>
             </div>

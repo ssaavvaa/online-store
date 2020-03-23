@@ -1,5 +1,6 @@
 import React from "react"
 import $ from "jquery"
+import debounce from 'lodash.debounce'
 import { navigate, useStaticQuery, graphql } from "gatsby"
 import EnglishUnAuth from './english-unAuth'
 import EnglishAuth from './english-auth'
@@ -23,18 +24,16 @@ function Header({ resetStore, siteMapNav, language, location, getCurrentUser }) 
       }
     `)
 
-  function handleSearch({ target: { value } }) {
+  const handleSearch = debounce((value) => {
 
     if (value.length) {
       return navigate(`/${location.pathname}`, { state: { search: value } })
     }
-
     if (!value.length) {
-      return navigate(`/${location.pathname}`, { state: { search: null } })
+      return navigate(`/${location.pathname}`, { state: { search: '' } })
     }
-
     return null
-  }
+  }, 1000)
 
   function showSideBar() {
     $(`.${sidebar} nav`).show()
@@ -46,8 +45,8 @@ function Header({ resetStore, siteMapNav, language, location, getCurrentUser }) 
     };
 
 
-    $(`.${shadow}`).fadeIn()
-    return $(`.${sidebar}`).animate({ width: 'toggle' }, 350);
+    $(`.${shadow} `).fadeIn()
+    return $(`.${sidebar} `).animate({ width: 'toggle' }, 350);
   }
 
   if (!getCurrentUser && language === 'en') {

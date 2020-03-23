@@ -4,45 +4,71 @@ import Layout from '../layout'
 import SEO from '../seo'
 import { GET_SUBCATEGORY_ALL_PRODUCTS } from '../../graphql/queries'
 import { ItemWithInfoNoGallery } from './productItem'
-import css from './index.module.scss'
+import css from './subCategoryAllProducts.module.scss'
 // import idGen from '../../helpers/id_generator'
 
 
 
-function Body({ subCategory }) {
+function Body({ subCategory, category }) {
 
-    const { data, loading } = useQuery(GET_SUBCATEGORY_ALL_PRODUCTS, {
-        variables: { subCategory },
+    const [products, setProducts] = useState([])
+    const [limit, setLimit] = useState(4)
+    const [noMore, setNoMore] = useState(false)
+
+    const { loading, fetchMore } = useQuery(GET_SUBCATEGORY_ALL_PRODUCTS, {
+        variables: { subCategory, limit },
         onError: err => console.log(err),
-        onCompleted: data => console.log(data)
+        onCompleted: data => setProducts(data.getSubCategoryAllProducts)
     })
-    // async function showMoreItems() {
-    //     const { data: { getAllProducts } } = await fetchMore({
-    //         variables: { limit: limit + 6 },
-    //         updateQuery: (_, { fetchMoreResult }, err) => {
-    //             setProducts(fetchMoreResult.getAllProducts)
-    //             return fetchMoreResult
-    //         },
+    async function showMoreItems() {
+        const { data: { getSubCategoryAllProducts } } = await fetchMore({
+            variables: { limit: limit + 4, subCategory },
+            updateQuery: (_, { fetchMoreResult }, err) => {
+                setProducts(fetchMoreResult.getSubCategoryAllProducts)
+                return fetchMoreResult
+            },
+        })
+        if (getSubCategoryAllProducts.length === products.length) {
+            return setNoMore(true)
+        }
 
-
-    //     })
-    //     if (getAllProducts.length === products.length) {
-    //         return setNoMore(true)
-    //     }
-
-    //     return setLimit(limit + 8);
-    // }
+        return setLimit(limit + 8);
+    }
     return (
         <div className='container'>
-            <h1 className={css.heading}>{subCategory}</h1>
+            {!loading && products.length > 0 &&
+                <h1 className={css.heading}>{subCategory}</h1>
+            }
+
             {loading && <p style={{ textAlign: 'center' }}>Loading...</p>}
-            {!loading && data.getSubCategoryAllProducts.length &&
+            {products.length > 0 &&
                 <ul className={css.allCategoryProducts}>
-                    {data.getSubCategoryAllProducts.map(props => (
-                        <ItemWithInfoNoGallery key={props._id} {...props} />
+                    {products.map(props => (
+                        <ItemWithInfoNoGallery
+                            key={props._id}
+                            subCategory={subCategory}
+                            category={category}
+                            {...props} />
+
                     ))}
                 </ul>
             }
+            {!loading && !products.length &&
+                <p style={{ textAlign: 'center' }}>
+                    Category "<span style={{ color: 'red' }}>{subCategory}</span>" not found...
+               </p>
+            }
+            {!noMore && !loading &&
+                <p onClick={showMoreItems}
+                    style={{ cursor: "pointer", textAlign: 'center', marginTop: '20px' }}>
+                    Load More
+            </p>
+            }
+
+            {noMore &&
+                <p style={{ textAlign: 'center', marginTop: '20px' }}>
+                    No more items found...
+            </p>}
         </div>
     )
 
@@ -69,8 +95,8 @@ function CategoryAllProducts({ location, category, subcategory }) {
     ]
     return (
         <Layout siteMapNav={siteMapNav} location={location} language='en'>
-            <SEO title="Category Products" />
-            <Body subCategory={subcategory} />
+            <SEO title="Product Page" />
+            <Body subCategory={subcategory} category={category} />
         </Layout >
     )
 }

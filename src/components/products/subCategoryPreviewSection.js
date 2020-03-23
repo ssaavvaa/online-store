@@ -18,14 +18,19 @@ function CategoryPreviewSection({ category, subCategory, products }) {
                     />
                 ))}
             </ul>
-            <Link
-                style={{
-                    textAlign: 'center',
-                    display: 'block',
-                    marginTop: '20px'
-                }}
-                to={`/products/${category}/${subCategory}`} >
+
+            <Link style={{
+                textAlign: 'right',
+                display: 'block',
+                color: 'black',
+                textDecoration: "none",
+                marginTop: '20px',
+                marginRight: '10%'
+            }} to={`/products/${category}/${subCategory}`}
+            >
                 Go to {subCategory.charAt(0).toUpperCase() + subCategory.substring(1)}
+                <i style={{ marginLeft: '10px', fontSize: 14 }} className="fas fa-arrow-right"></i>
+
             </Link>
         </section>
     )

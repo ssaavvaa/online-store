@@ -7,6 +7,11 @@
     transform: rotate(45deg);
 }
 
+.rotateCross2{
+   
+    transform: rotate(90deg);
+}
+
 .close{
    font-size: 30px;
     color:white;
@@ -45,68 +50,116 @@
         overflow-y: scroll;
         padding-top:20px;
         min-height: 100vh;
-   
-        ul{
-            cursor: pointer;
-            margin:0px;
-        }
+
         div{
             display: grid;
             align-items: center;
-       
             cursor: pointer;
             justify-content: space-between;
             padding:5px 20px;
+            grid-template-columns: 10px 1fr;
+
             grid-template-areas: 'plus text'
                                   'ul ul';
              &:hover{
                  background: rgba(243, 231, 231, 0.507);
               }
            i {
-            transition:  all .3s ease-in-out;
-               display: inline-block;
+            
+                transition:  all .3s ease-in-out;
+                display: inline-block;
                 grid-area: plus;
                 font-size: 14px;
-            
            }
            p {
-              
+            font-size: 20px;
+            text-align: right;
                margin:0px;
+               padding:5px;
                grid-area: text;
                margin-bottom:5px;
            }
-           ul {
+
+           .categories{
                display: none;
-               grid-area: ul;
-               li{
-                border-top:1px solid rgba(0, 0, 0, 0.116);
-                list-style: none;
+            cursor: pointer;
+            list-style: none;
+            grid-area: ul;
+            margin:0px;
+            li{
+                box-sizing: border-box!important;
+                padding:0px;
                 margin:0px;
-               
-                a{
-                    font-size: 14px;
-                  
-                    padding:5px;
-                    justify-content: flex-end;
-                  
-                    transition: all .3s ease-in-out;
-                    &:hover{
-                        transform: translateX(-20px);
- 
-                     }
+                p{
+                    display: flex;
+                    padding:5px 0px;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin:0px;
+                    i{
+                       display: inline-block;
+                   
+                      width:10px;
+                      height:10px;
+                        transition:  all .3s ease-in-out;
+                        font-size: 14px;
+                    }
                 }
-               }
-           }
+                &:hover{
+                    border-bottom: .5px solid rgba(0, 0, 0, 0.336);
+                }
+                margin-bottom:3px;
+                .subCategories {
+                    display: none;
+                    grid-area: ul;
+                    &:last-child{
+                        margin-bottom: 20px;
+                    }
+                    li{
+                        list-style: square ;
+                        &:hover{
+                            border-bottom: none;
+                        }
+                    p {
+                      
+                        border-top:1px solid rgba(0, 0, 0, 0.062);
+                        list-style: none;
+                        
+                       
+                    }
+                    
+             
+                     a{
+                        
+                         font-size: 14px;
+                         padding:0px;
+                         justify-content: flex-end;
+                         
+                         transition: all .3s ease-in-out;
+                         &:hover{
+                            border-bottom: none!important;
+                           background: transparent;
+                             transform: translateX(-20px);
+      
+                          }
+                     }
+                    }
+                }
+            }
+
+           
+        }
+           
         }
         a {
             transition: all .2s ease-in-out;
             i{
                 font-size: 14px;
-              
+
             }
             color:$back_color;
             &:hover{
-                
+
                 background: rgba(243, 231, 231, 0.507);
             }
             padding:5px 20px;

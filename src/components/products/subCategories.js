@@ -13,28 +13,36 @@ import SEO from '../seo'
 
 function Body({ category }) {
 
-    const { data, loading } = useQuery(GET_SUBCATEGORIES_PREVIEW, {
+    const [products, setProducts] = useState([])
+
+    const { loading } = useQuery(GET_SUBCATEGORIES_PREVIEW, {
         variables: { category },
         onError: err => console.log(err),
-        onCompleted: data => console.log(data)
+        onCompleted: data => setProducts(data.getSubCategoriesWIthProductsPreview)
     });
 
     return (
         <div className='container'>
-            <h1 className={css.heading}>{category}</h1>
             {loading && <p style={{ textAlign: "center" }}>Loading...</p>}
-            {!loading && !data.getSubCategoriesWIthProductsPreview.length &&
-                <p style={{ textAlign: "center" }}>This category doesn't exist</p>
+
+            {!loading && products.length > 0 &&
+                <h1 className={css.heading}>{category}</h1>
             }
-            {!loading &&
-                data.getSubCategoriesWIthProductsPreview.map(({ subCategory, products }) => (
-                    <PreviewSection
-                        key={idGen()}
-                        category={category}
-                        subCategory={subCategory}
-                        products={products}
-                    />
-                ))
+
+            {!loading && !products.length &&
+                <p style={{ textAlign: "center" }}>
+                    Category "<span style={{ color: 'red' }}>{category}</span>" not found ...
+                </p>
+            }
+
+            {!loading && products.length > 0 && products.map(({ subCategory, products }) => (
+                <PreviewSection
+                    key={idGen()}
+                    category={category}
+                    subCategory={subCategory}
+                    products={products}
+                />
+            ))
             }
 
         </div>

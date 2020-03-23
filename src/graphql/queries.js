@@ -14,9 +14,12 @@ export const GET_CURRENT_USER = gql`
   }
 `
 
-export const GET_PRODUCTS_CATEGORIES = gql`
+export const GET_CATEGORIES = gql`
 query{
-  getProductsCategories
+  getCategoriesWithSubCategories {
+    category
+    subCategories
+  }
 }
 `
 
@@ -47,8 +50,8 @@ query($category: String!){
 `
 export const GET_SUBCATEGORY_ALL_PRODUCTS = gql`
 
-query($subCategory: String!){
-  getSubCategoryAllProducts(subCategory: $subCategory){
+query($subCategory: String! , $limit: Int!){
+  getSubCategoryAllProducts(subCategory: $subCategory , limit: $limit){
     _id
     name
     model
@@ -56,6 +59,38 @@ query($subCategory: String!){
     images
     price
   }
+}
+`
+
+export const GET_PRODUCT = gql`
+query($_id: ID!){
+  getProduct(_id:$_id){
+    _id
+  name
+  model
+  description
+  brand
+  images,
+  price,
+  colors
+  creationDate
+  creator {
+    _id
+      username
+      email
+      picture
+  }
+  feedbacks {
+    _id
+    author{
+      _id
+      username
+      picture
+    }
+     feedback
+     creationDate
+  }
+ }
 }
 `
 
@@ -70,3 +105,17 @@ export const GET_AUTHOR = gql`
     }
   }
 `
+
+export const SEARCH_PRODUCTS = gql`
+ query($query: String , $limit: Int!){
+  searchProducts( query: $query , limit: $limit){
+    _id
+    name
+    brand
+    category
+    subCategory
+    images
+    model
+    description
+  }
+}`
