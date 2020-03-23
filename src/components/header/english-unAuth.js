@@ -52,7 +52,7 @@ export default function ({
 
             <div className={css.nav}>
                 <div>Sponsors</div>
-                <div>Hello !</div>
+                <div>Hello User!</div>
                 <nav>
                     {siteMapNav ?
                         siteMapNav.map(({ name, url }) => (
