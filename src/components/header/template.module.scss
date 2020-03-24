@@ -1,9 +1,8 @@
 
 @import '../../styles/variables.scss';
-
+@import '../../styles/media.scss';
 
 .header{
-   
     padding-top:10px;
     padding-bottom:0px;
     background: linear-gradient(to left , $third_color , $back_color);
@@ -15,6 +14,12 @@
     grid-template-areas: "logo input signUp cart bars"
                           "nav nav nav nav nav";
                           border-bottom:2px solid $back_color;
+  @include phone {
+ 
+    grid-template-columns: 50px 1fr 1fr 1fr 50px ;
+      grid-template-areas: "logo cart signUp userLogo bars"
+                             "input input input input input";
+ }
 }
 
 .language{
@@ -47,10 +52,19 @@
         font-size: 30px;
         top:calc(50% - 15px);
         right:20px;
+        @include phone {
+            font-size: 24px;
+        }
     }
     grid-area: input;
     
     margin:0px 50px;
+
+    @include phone {
+        margin:10px;
+        padding:10px;
+        margin-top:0px;
+    }
 }
 
 .options{
@@ -79,9 +93,6 @@
 }
 
 .nav{
-
-   
-
     background: $scd_color;
     padding:10px 30px;
     text-align: center;
@@ -107,6 +118,9 @@
         }
     }
    }
+   @include tablet {
+       display: none;
+   }
 }
 
 .signUp{
@@ -116,15 +130,28 @@
     cursor: pointer;
 
         font-size: 25px;
-  
+  @include phone {
+      justify-self: center;
+  }
 }
 
 .cart{
    
     color:white;
     justify-self: flex-start;
+    align-self: center;
+    @include phone {
+        justify-self: center;
+        font-size: 18px;
+    }
    i{
    font-size: 25px;
+   @include phone {
+    justify-self: center;
+    font-size: 22px;
+    position: relative;
+    top:2px;
+}
    }
     grid-area: cart;
 }
@@ -151,4 +178,8 @@
     grid-area: userLogo;
    color:white;
    font-size: 25px;
+   @include phone {
+    font-size: 22px;
+    justify-self: center;
+}
 }

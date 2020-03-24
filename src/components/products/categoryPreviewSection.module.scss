@@ -16,13 +16,14 @@
 
 .productsList{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat( auto-fit , minmax(165px , 1fr));
     justify-content: center;
-    grid-gap:10px;
+    
     li {
+        background: white;
+        border:.2px solid rgba(0, 0, 0, 0.08);
         padding:0px;
-        border-radius: 5px;
- 
+
         justify-self: center;
        img{
         max-width: 400px;
