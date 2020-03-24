@@ -9,8 +9,9 @@
                           "nav nav nav nav nav nav";
 
 @include phone {
-
-grid-template-columns: 50px 1fr 1fr 1fr 50px ;
+    justify-content: space-between;
+    
+grid-template-columns: 50px 50px 50px 50px 50px ;
     grid-template-areas: "logo cart userLogo signUp  bars"
                             "input input input input input";
 }
