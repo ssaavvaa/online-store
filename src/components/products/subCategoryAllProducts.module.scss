@@ -8,8 +8,10 @@
     justify-content: center;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap:20px;
-
+grid-gap:.01px;
+    li{
+        border:.3px solid rgba(0, 0, 0, 0.13);
+    }
     a{
         text-decoration: none;
         color:black;

@@ -1,6 +1,5 @@
 import React from "react"
-import { Link, navigate } from 'gatsby'
-import moment from 'moment'
+import { Link } from 'gatsby'
 import Layout from "../layout"
 import SEO from "../seo"
 import siteMapNav from '../../site-map-nav/profile.json'
@@ -29,21 +28,36 @@ function Body({ getCurrentUser }) {
         )
     }
 
-    const { username, email, creationDate } = getCurrentUser;
+    const { username, email, creationDate, accountType } = getCurrentUser;
 
     return (
 
         <div className='container'>
             <h1 className={css.heading}>Profile</h1>
-            <p><u>Username</u>: {username}</p>
-            <p><u>Email</u>: {email}</p>
-            <p><u>Created</u>: {moment(creationDate).format('MMMM Do YYYY')}</p>
-            <Link to='profile/products' className={css.toMyCreatedProducts}>My Created Products <i className="fas fa-arrow-right"></i></Link>
-            <button
-                onClick={() => navigate('/profile/create-product')}
-                className={css.button}>
-                Create Product
-                </button>
+            <header className={css.header}>
+                <ul>
+                    <li>
+                        <Link to='/profile/info'>My Info</Link>
+
+                    </li>
+                    <li>
+                        <Link to='/profile/products'>My Products</Link>
+
+                    </li>
+                    <li>
+                        <Link to='/profile/products'>Waiting for approval</Link>
+
+                    </li>
+                    <li>
+                        <Link to='/profile/create-product'>Create Product</Link>
+
+                    </li>
+                    <li>
+                        <Link to='/profile/products'>My purchases</Link>
+
+                    </li>
+                </ul>
+            </header>
         </div>
 
     )

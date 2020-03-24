@@ -22,7 +22,7 @@ function Layout({ children,
   siteMapNav = null,
   getCurrentUser,
   resetStore,
-  language }) {
+  language = 'en' }) {
 
   const [searchQuery, setSearchQuery] = useState('')
 

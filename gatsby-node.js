@@ -39,4 +39,9 @@ exports.createPages = async ({ actions }) => {
         matchPath: "/products/:category/:subcategory/:_id",
         component: ProductComponent
     })
+    createPage({
+        path: "/profile/",
+        matchPath: "/profile/products/:_id",
+        component: ProductComponent
+    })
 }

@@ -69,7 +69,7 @@ function Category({ category, location }) {
 
     return (
         <Layout siteMapNav={siteMapNav} location={location} language='en'>
-            <SEO title="categories" />
+            <SEO title={`Products | ${category.charAt(0).toUpperCase() + category.substring(1)}`} />
             <Body category={category} />
         </Layout >
     )

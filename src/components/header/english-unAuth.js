@@ -64,17 +64,17 @@ export default function ({
                 <ul className={css.options}>
                     <li>
                         <Link to='/products'>
-                            products
+                            Products
                         </Link>
                     </li>
                     <li>
                         <Link to='/'>
-                            pictures
+                            Pictures
                         </Link>
                     </li>
                     <li>
                         <Link to='/'>
-                            services
+                            Services
                         </Link>
                     </li>
                 </ul>

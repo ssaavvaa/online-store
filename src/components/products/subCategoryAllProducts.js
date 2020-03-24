@@ -95,7 +95,11 @@ function CategoryAllProducts({ location, category, subcategory }) {
     ]
     return (
         <Layout siteMapNav={siteMapNav} location={location} language='en'>
-            <SEO title="Product Page" />
+            <SEO title={
+                `Products 
+                 | ${category.charAt(0).toUpperCase() + category.substring(1)}
+                 | ${subcategory.charAt(0).toUpperCase() + subcategory.substring(1)}
+                 `} />
             <Body subCategory={subcategory} category={category} />
         </Layout >
     )

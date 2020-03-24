@@ -1,6 +1,7 @@
 
 import React, { useState } from "react"
 import { useQuery } from '@apollo/react-hooks';
+import { Link } from 'gatsby'
 import Layout from "../layout"
 import SEO from "../seo"
 import { GET_USER_ALL_CREATED_PRODUCTS } from '../../graphql/queries'
@@ -43,17 +44,23 @@ function Body({ getCurrentUser }) {
     return (
 
         <div className='container'>
-            <h1 className={css.heading}>Products</h1>
+            <h1 className={css.heading}>My Products</h1>
+
             {loading && <p style={{ textAlign: 'center' }}>Loading</p>}
+            {!loading && <p>{products.length} Items</p>}
             {!loading && !products.length && <p style={{ textAlign: "center" }}> You haven't created any products yet ...</p>}
             {!loading && products.length > 0 &&
                 <ul className={css.myProducts}>
-                    {products.map(({ images, name }) => (
+                    {products.map(({ images, name, _id }) => (
                         <li>
-                            <p>{name}</p>
-                            <img alt='name' src={images[0]} />
+                            <Link to={`/profile/products/${_id}`}>
+
+                                <p>{name}</p>
+                                <img alt='name' src={images[0]} />
+                                <i className="fas fa-edit"></i>
+                            </Link>
                         </li>
-                    ))}
+                    )).sort((a, b) => (a.subCategory < b.subCategory) ? 1 : -1)}
                 </ul>
             }
         </div>

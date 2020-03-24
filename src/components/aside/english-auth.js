@@ -45,6 +45,7 @@ export default function ({ categories, getCurrentUser, resetStore }) {
                 <i data-close="true" className={`fas fa-times ${css.close}`} />
                 <nav>
                     <Link to="/"><i className="fas fa-arrow-left"></i><span>Home</span></Link>
+                    <Link to='/profile'><i className="fas fa-arrow-left"></i><span>Profile</span></Link>
                     <div>
                         <i className="fas fa-plus"></i>
                         <p onClick={handleSubMenu}>Products</p>
@@ -71,27 +72,19 @@ export default function ({ categories, getCurrentUser, resetStore }) {
                                     </ul>
                                 </li>
                             ))}
+
                         </ul>
                     </div>
                     <Link to="/about"><i className="fas fa-arrow-left"></i><span>About</span></Link>
-                    {!getCurrentUser
-                        ? <>
-                            <Link to="/sign-in">
-                                <i className="fas fa-arrow-left"></i>
-                                <span>Sign In</span>
-                            </Link>
-                            <Link to="/sign-up">
-                                <i className="fas fa-arrow-left"></i>
-                                <span>Sign Up</span>
-                            </Link>
-                        </>
-                        : <p
-                            onClick={handleSignOut}
-                            className={css.signOut}
-                        >
-                            Sign out
+
+                    <p
+                        style={{ borderTop: '1px solid rgba(0,0,0,0.1)', paddingTop: '10px' }}
+                        onClick={handleSignOut}
+                        className={css.signOut}
+                    >
+                        Sign out
                           </p>
-                    }
+
 
 
                 </nav>

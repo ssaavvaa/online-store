@@ -27,8 +27,13 @@ function Body({ _id }) {
         onError: () => setError(true)
     })
 
-
-    const { name, brand, images, model, description, price, feedbacks } = product;
+    const { name,
+        brand,
+        images,
+        model,
+        description,
+        price,
+        feedbacks } = product;
 
 
 
@@ -98,7 +103,12 @@ function ProductPage({ location, category, subcategory, _id }) {
     ]
     return (
         <Layout siteMapNav={siteMapNav} location={location} language='en'>
-            <SEO title="Product Page" />
+            <SEO title={
+                `Products 
+                 | ${category.charAt(0).toUpperCase() + category.substring(1)}
+                 | ${subcategory.charAt(0).toUpperCase() + subcategory.substring(1)}
+                 | ${_id}
+                 `} />
             <Body _id={_id} />
         </Layout >
     )
