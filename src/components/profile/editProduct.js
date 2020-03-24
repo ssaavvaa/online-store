@@ -30,7 +30,7 @@ function Body({ getCurrentUser, _id }) {
         )
     }
 
-    const { loading } = useQuery(GET_PRODUCT, {
+    useQuery(GET_PRODUCT, {
         variables: { _id },
         onCompleted: ({ getProduct }) => console.log(getProduct),
         onError: err => console.log(err)

@@ -11,7 +11,7 @@ function Body({ getCurrentUser }) {
 
     if (!getCurrentUser) {
         return (
-            <div className='container'>
+            <>
                 <p
                     style={{
                         textAlign: "center",
@@ -25,7 +25,7 @@ function Body({ getCurrentUser }) {
                         textAlign: 'center'
                     }}
                 >To view your profile...</p>
-            </div>
+            </>
         )
     }
 
