@@ -7,7 +7,6 @@ import css from './index.module.scss'
 
 function Body({ getCurrentUser }) {
 
-
     if (!getCurrentUser) {
         return (
             <div className='container'>
