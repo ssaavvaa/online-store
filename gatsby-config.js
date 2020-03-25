@@ -25,10 +25,10 @@ module.exports = {
         src: "https://widget.cloudinary.com/v2.0/global/all.js",
       },
     },
-    {
-      resolve: `gatsby-plugin-create-client-paths`,
-      options: { prefixes: [`/products/*`, `/profile/*`] },
-    },
+    // {
+    //   resolve: `gatsby-plugin-create-client-paths`,
+    //   options: { prefixes: [`/products/*`, `/profile/*`] },
+    // },
     {
       resolve: "gatsby-plugin-react-svg",
       options: {
