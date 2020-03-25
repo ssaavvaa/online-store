@@ -22,7 +22,7 @@ function Body({ category }) {
     });
 
     return (
-        <div className='container'>
+        <div className='wrapper'>
             {loading && <p style={{ textAlign: "center" }}>Loading...</p>}
 
             {!loading && products.length > 0 &&

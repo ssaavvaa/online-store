@@ -11,7 +11,7 @@ function Body({ getCurrentUser }) {
 
     if (!getCurrentUser) {
         return (
-            <div className='container'>
+            <div className='wrapper'>
                 <p
                     style={{
                         textAlign: "center",

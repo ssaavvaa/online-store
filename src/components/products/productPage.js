@@ -37,7 +37,7 @@ function Body({ _id }) {
 
 
 
-    return <div className='container'>
+    return <div className='wrapper'>
         {loading && <p style={{ textAlign: "center" }}>Loading...</p>}
         {error && <p > <span style={{ color: 'red' }}>Error: </span> Product with id "{_id}" not found</p>}
         {!loading && !error &&

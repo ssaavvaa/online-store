@@ -12,7 +12,7 @@ function Body({ getCurrentUser }) {
 
     if (!getCurrentUser) {
         return (
-            <div className='container'>
+            <div className='wrapper'>
                 <p
                     style={{
                         textAlign: "center",
@@ -43,7 +43,7 @@ function Body({ getCurrentUser }) {
 
     return (
 
-        <div className='container'>
+        <div className='wrapper'>
             <h1 className={css.heading}>My Products</h1>
 
             {loading && <p style={{ textAlign: 'center' }}>Loading</p>}

@@ -13,7 +13,7 @@ function Body({ getCurrentUser }) {
 
     return (
 
-        <div className='container'>
+        <div className='wrapper'>
             <h1 className={css.heading}>Profile</h1>
             <header className={css.header}>
                 <ul>

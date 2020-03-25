@@ -35,7 +35,7 @@ function Body({ subCategory, category }) {
         return setLimit(limit + 8);
     }
     return (
-        <div className='container'>
+        <div className='wrapper'>
             {!loading && products.length > 0 &&
                 <h1 className={css.heading}>{subCategory}</h1>
             }

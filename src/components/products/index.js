@@ -30,7 +30,7 @@ function Body() {
     //     return setLimit(limit + 8);
     // }
     return (
-        <div className='container'>
+        <div className='wrapper'>
             <h1 className={css.heading}>PRODUCTS</h1>
             {loading && <p style={{ textAlign: "center" }}> Loading...</p>}
             {!loading &&

@@ -12,7 +12,7 @@ function Body({ getCurrentUser, _id }) {
 
     if (!getCurrentUser) {
         return (
-            <div className='container'>
+            <div className='wrapper'>
                 <p
                     style={{
                         textAlign: "center",
@@ -38,7 +38,7 @@ function Body({ getCurrentUser, _id }) {
 
     return (
 
-        <div className='container'>
+        <div className='wrapper'>
             <h1 className={css.heading}>Edit Product</h1>
 
 

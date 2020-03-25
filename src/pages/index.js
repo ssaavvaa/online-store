@@ -19,7 +19,7 @@ function Body({ productsGallery }) {
 
   return (
 
-    <div className='container'>
+    <div className='wrapper'>
       <h1 className={css.heading}>STORE</h1>
       <div className={css.asidePhotos}>
         <h3>New Arrivals</h3>

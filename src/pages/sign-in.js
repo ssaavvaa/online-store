@@ -87,7 +87,7 @@ function Body() {
     }
 
     return (
-        <div className='container'>
+        <div className='wrapper'>
             <h1 className={css.heading}>Sign In</h1>
 
             <form onKeyDown={handleKeyDown} autoComplete="on" onSubmit={handleSubmit} className={css.form}>

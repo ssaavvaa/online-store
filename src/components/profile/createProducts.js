@@ -11,7 +11,7 @@ import css from './createProduct.module.scss'
 function Body({ getCurrentUser }) {
     if (!getCurrentUser) {
         return (
-            <div className='container'>
+            <div className='wrapper'>
                 <p
                     style={{
                         textAlign: "center",
@@ -91,7 +91,7 @@ function Body({ getCurrentUser }) {
 
     return (
 
-        <div className='container'>
+        <div className='wrapper'>
             <h1 className={css.heading}>Create Product</h1>
             <form onSubmit={handleSubmit} className='createForm'>
                 <input
