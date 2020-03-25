@@ -33,7 +33,7 @@ function Body({ getCurrentUser }) {
 
     return (
 
-        <div className='container'>
+        <div className='wrapper'>
             <h1 className={css.heading}>My Info</h1>
             <img className={css.image} src={picture} alt='user profile picture' />
             <p><u>Username</u>: {username}</p>
