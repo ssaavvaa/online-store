@@ -7,25 +7,7 @@ import css from './index.module.scss'
 
 function Body({ getCurrentUser }) {
 
-    if (!getCurrentUser) {
-        return (
-            <div className='container'>
-                <p
-                    style={{
-                        textAlign: "center",
-                        fontSize: '24px'
-                    }}
-                >Please
-                  <Link style={{ marginLeft: '20px' }} to='/sign-in' >Sign In</Link>
-                </p>
-                <p
-                    style={{
-                        textAlign: 'center'
-                    }}
-                >To view your profile...</p>
-            </div>
-        )
-    }
+
 
     const { username, email, creationDate, accountType } = getCurrentUser;
 
@@ -64,7 +46,7 @@ function Body({ getCurrentUser }) {
 
 export default ({ location }) => (
     <Layout siteMapNav={siteMapNav} location={location} language='en'>
-        <SEO title="Profile" />
+        <SEO title="Profile | Info" />
         <Body />
     </Layout>
 )

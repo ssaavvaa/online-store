@@ -56,9 +56,7 @@ function Layout({ children,
       getCurrentUser,
     })
   );
-  console.log(location.pathname)
-  console.log(childWithProps)
-  console.log(searchQuery)
+
   return (
     <>
       <Header

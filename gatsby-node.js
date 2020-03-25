@@ -18,20 +18,14 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 
 exports.onCreatePage = async ({ page, actions }) => {
     const { createPage } = actions
-    // Only update the `/app` page.
+
     if (page.path.match(/^\/profile/)) {
-        // page.matchPath is a special key that's used for matching pages
-        // with corresponding routes only on the client.
         page.matchPath = "/profile/*"
-        // Update the page.
         createPage(page)
     }
 
     if (page.path.match(/^\/products/)) {
-        // page.matchPath is a special key that's used for matching pages
-        // with corresponding routes only on the client.
         page.matchPath = "/products/*"
-        // Update the page.
         createPage(page)
     }
 }
