@@ -21,7 +21,7 @@ export default ({ searchQuery }) => {
 
 
     return (
-        <div className='container'>
+        <div className='wrapper'>
             <h1 className={css.heading}>Search</h1>
             {loading && <p
                 style={{ textAlign: 'center' }}>

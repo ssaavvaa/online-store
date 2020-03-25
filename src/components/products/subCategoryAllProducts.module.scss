@@ -7,7 +7,7 @@
 .allCategoryProducts{
     justify-content: center;
     display: grid;
-    grid-template-columns: repeat( auto-fit , minmax(165px , 1fr));
+    grid-template-columns: repeat( auto-fit , minmax(150px , 1fr));
 grid-gap:.01px;
     li{
         border:.2px solid rgba(0, 0, 0, 0.08);

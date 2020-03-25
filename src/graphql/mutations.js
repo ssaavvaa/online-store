@@ -80,6 +80,14 @@ export const CREATE_PRODUCT = gql`
   }
 }`
 
+export const DELETE_PRODUCT = gql`
+  mutation($_id: ID!){
+   deleteProduct(_id: $_id){
+     _id
+     name
+  }
+}`
+
 
 
 export const SIGN_IN_USER = gql`

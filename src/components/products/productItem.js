@@ -32,7 +32,6 @@ export function Item({
 
 export function ItemWithInfoNoGallery({
     _id,
-    name,
     subCategory = null,
     category = null,
     brand,

@@ -144,6 +144,7 @@ export const SEARCH_PRODUCTS = gql`
     _id
     name
     brand
+    price
     category
     subCategory
     images

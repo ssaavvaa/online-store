@@ -7,7 +7,7 @@ import CreateProduct from '../../components/profile/createProducts'
 import NotFound from '../404'
 import Products from '../../components/profile/products'
 import Info from '../../components/profile/info'
-import EditProduct from '../../components/profile/editProduct'
+import Product from '../../components/profile/product'
 
 
 export default ({ location }) => {
@@ -18,7 +18,7 @@ export default ({ location }) => {
       <CreateProduct location={location} path='/create-product' />
       <Products location={location} path='/products' />
       <Info location={location} path='/info' />
-      <EditProduct location={location} path='/products/:_id' />
+      <Product location={location} path='/products/:_id' />
       <NotFound path="*" />
     </Router >
   )

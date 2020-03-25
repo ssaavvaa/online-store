@@ -8,7 +8,7 @@
         "url": "/profile"
     },
     {
-        "name": "Products",
+        "name": "My Products",
         "url": "/profile/products"
     }
 ]

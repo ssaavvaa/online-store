@@ -52,7 +52,7 @@ function Body({ getCurrentUser }) {
             {!loading && products.length > 0 &&
                 <ul className={css.myProducts}>
                     {products.map(({ images, name, _id }) => (
-                        <li>
+                        <li key={_id}>
                             <Link to={`/profile/products/${_id}`}>
 
                                 <p>{name}</p>

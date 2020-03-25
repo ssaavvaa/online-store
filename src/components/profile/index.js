@@ -5,11 +5,7 @@ import SEO from "../seo"
 import siteMapNav from '../../site-map-nav/profile.json'
 import css from './index.module.scss'
 
-function Body({ getCurrentUser }) {
-
-
-
-    const { username, email, creationDate, accountType } = getCurrentUser;
+function Body() {
 
     return (
 
@@ -46,7 +42,7 @@ function Body({ getCurrentUser }) {
 
 export default ({ location }) => (
     <Layout siteMapNav={siteMapNav} location={location} language='en'>
-        <SEO title="Profile | Info" />
+        <SEO title="Profile" />
         <Body />
     </Layout>
 )

@@ -4,7 +4,6 @@ import { useMutation } from "@apollo/react-hooks";
 import Layout from "../layout"
 import SEO from "../seo"
 import { CREATE_PRODUCT } from '../../graphql/mutations'
-import { GET_USER_ALL_CREATED_PRODUCTS } from '../../graphql/queries'
 import siteMapNav from '../../site-map-nav/create-product.json'
 import css from './createProduct.module.scss'
 
