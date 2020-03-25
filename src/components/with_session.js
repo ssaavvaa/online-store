@@ -16,7 +16,7 @@ export default Component => props => {
   const { getCurrentUser } = data;
   const { getCategoriesWithSubCategories } = categoriesData.data
 
-  const { reFetchObservableQueries, resetStore } = client;
+  const { resetStore } = client;
   return (
     <Component
       categories={getCategoriesWithSubCategories || []}
