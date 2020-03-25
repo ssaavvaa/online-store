@@ -12,7 +12,7 @@ import "./layout.scss"
 import "../fonts/fonts.scss";
 
 
-let currentTop = 0;
+
 
 const authRoutes = ['/sign-up', '/sign-in']
 
@@ -56,8 +56,9 @@ function Layout({ children,
       getCurrentUser,
     })
   );
-
-
+  console.log(location.pathname)
+  console.log(childWithProps)
+  console.log(searchQuery)
   return (
     <>
       <Header
