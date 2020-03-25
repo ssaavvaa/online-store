@@ -47,9 +47,10 @@ import moment from 'moment'
 
 
 export default ({ location }) => (
-    // <Layout siteMapNav={siteMapNav} location={location} language='en'>
-    //     <SEO title="Profile | Info" />
-    //     <Body />
-    // </Layout>
-    <p>Info</p>
+    <Layout siteMapNav={siteMapNav} location={location} language='en'>
+        <SEO title="Profile | Info" />
+        {/* <Body /> */}
+        <p>Body</p>
+    </Layout>
+
 )
