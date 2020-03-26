@@ -11,27 +11,14 @@ export default Component => props => {
   const categoriesData = useQuery(GET_CATEGORIES);
   if (error) console.log(error)
   if (error) return <p>Error...</p>
-  if (categoriesData.loading || loading) return <div style={{
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: '100vw',
-    height: '100vh',
-    background: 'white',
-    zIndex: 99
-  }}>
-    <>
-
-      <Component
-        categories={[]}
-        location={{ state: null }}
-        getCurrentUser={null}
-        resetStore={foo()}
-      />
-    </>
-  </div>
-
-
+  if (categoriesData.loading || loading) return (
+    <p style={{
+      textAlign: 'center',
+      padding: '20px'
+    }}>
+      Loading...
+    </p>
+  )
 
   const { getCurrentUser } = data;
   const { getCategoriesWithSubCategories } = categoriesData.data
